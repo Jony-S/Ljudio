@@ -1,20 +1,25 @@
 import { createStore } from "vuex" 
 
-const store = createStore({
-   state:{
-        name: "Vue"
-   },
-   mutations:{
-       setName(state, x){
-           state.name = x
-       }
-   },
-   actions:{
-        async ({commit}){
-            let name = 'Vue with vuex'
-            commit('setName', name)
-        }
-   }
-})
+const state = {
+    title: 'VuexPlayer'
 
-export default store
+}
+
+const mutations = {
+    changeTitle(state, value){
+        state.title = value
+    }
+}
+
+const actions = {
+    async loadTitle({commit}){
+        let result = await fetch('https://mocki.io/v1/a593f10c-6835-48e7-9d3e-9f21017d05de')
+        let data = await result.json()
+        commit('changeTitle', data.title)
+    }
+}
+
+
+export default createStore ({
+    state, mutations, actions
+})
