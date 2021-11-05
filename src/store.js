@@ -1,21 +1,25 @@
 import { createStore } from "vuex" 
 
 const state = {
-    title: 'VuexPlayer'
-
+    data: {}
 }
 
 const mutations = {
-    changeTitle(state, value){
-        state.title = value
+    playSong(state, value){
+        state.data = value
     }
 }
 
 const actions = {
-    async loadTitle({commit}){
-        let result = await fetch('https://mocki.io/v1/a593f10c-6835-48e7-9d3e-9f21017d05de')
+    async loadSong({commit}){
+        let result = await fetch('https://yt-music-api.herokuapp.com/api/yt/songs/nothing%20else%20matters')
         let data = await result.json()
-        commit('changeTitle', data.title)
+        commit('playSong', data)
+    },
+    async searchForSong({commit, textFromSearchField}){
+        let result = await fetch('https://yt-music-api.herokuapp.com/api/yt/songs/' + textFromSearchField)
+        let data = await result.json()
+        commit('playSong', data)
     }
 }
 
