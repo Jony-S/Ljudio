@@ -11,8 +11,8 @@ const mutations = {
 }
 
 const actions = {
-    async loadSong({commit}){
-        let result = await fetch('https://yt-music-api.herokuapp.com/api/yt/songs/nothing%20else%20matters')
+    async loadSong({commit, value}){
+        let result = await fetch('https://yt-music-api.herokuapp.com/api/yt/songs/{{nothing%20else%20matters}}')
         let data = await result.json()
         commit('playSong', data)
     },
