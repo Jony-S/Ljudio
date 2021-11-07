@@ -9,9 +9,6 @@
 
         <Player/>
 
-        <br>
-        <br>
-
         </main>
         </div>
     </body>

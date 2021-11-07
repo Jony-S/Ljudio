@@ -1,26 +1,22 @@
 <template>
 <section>
   <div class="search">
-    <label>Search for a song:</label>
+    <label>Search for a song:     </label>
     <input type="text" placeholder="Search for a song" v-model="name" />
-    <button @click="searchSong">Search</button> 
+    <button class="fa fa-search fa-2x" @click="searchSong"></button> 
     </div>
 
     <br>
-    <br>
 
-    <div class="buttons">
-        <button @click="playSong()">Play</button>
-        <button @click="pause()">Pause</button>
-        <button @click="playPrevious()">Play Next</button>
-        <button @click="playNext()">Play Previous</button>
+    <div class="button">
+        <button class="fa fa-play fa-2x" @click="playSong()"></button>
+        <button class="fa fa-pause fa-2x" @click="pause()"></button>
+        <button class="fa fa-step-forward fa-2x" @click="playPrevious()"></button>
+        <button class="fa fa-step-backward fa-2x" @click="playNext()"></button>
     </div>
-
-    <br>
-    <br>
 
     <ul class="list">
-      <li><b>Click to play:</b></li>
+      <li><p>Search result:</p></li>
       <li v-for='songs in this.$store.state.data.content' :key="songs">
         <button @click="playByIndex(songs.videoId)">{{ songs.name }}</button>
       </li>

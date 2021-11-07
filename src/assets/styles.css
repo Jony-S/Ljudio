@@ -16,8 +16,6 @@ header {
     background-color: rgba (223, 213, 0,9);
     width: 20vw;
     height: 8vh;
-    display: flex;
-    justify-content: center;
     margin: 5vh 35vw 5vh 35vw;
 }
 
@@ -27,22 +25,30 @@ h1 {
 
 main {
     width: 70vw;  
-    display: flex;
-    justify-content: center; 
     margin: 0vh 10vw 0vh 10vw;
 }
 
 .search {
-    background-color: rgba (223, 100, 0,9);
     padding: 10px;
+    display: flexbox;
+    justify-content: space-between;
 }
 
 .button {
-    background-color: rgba (223, 213, 0,9);
     padding: 10px;
+    display: flexbox;
+    justify-content: space-between;
+
 }
 
 .list{
-    background-color: rgba (223, 213, 0,9);
     padding: 10px;
+    list-style-type:none;
+    display: flexbox;
+    justify-content: space-between;
 }
+label, p {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: larger;
+}
+
