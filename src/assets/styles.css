@@ -1,0 +1,48 @@
+body {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+.wrapper {
+    background-image: url(https://images.unsplash.com/photo-1458560871784-56d23406c091?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80);
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 90vw;
+    margin: 5vh 5vw 5vh 5vw;
+}
+
+header {
+    font-size: 200%;
+    background-color: rgba (223, 213, 0,9);
+    width: 20vw;
+    height: 8vh;
+    display: flex;
+    justify-content: center;
+    margin: 5vh 35vw 5vh 35vw;
+}
+
+h1 {
+    margin: 0;
+}
+
+main {
+    width: 70vw;  
+    display: flex;
+    justify-content: center; 
+    margin: 0vh 10vw 0vh 10vw;
+}
+
+.search {
+    background-color: rgba (223, 100, 0,9);
+    padding: 10px;
+}
+
+.button {
+    background-color: rgba (223, 213, 0,9);
+    padding: 10px;
+}
+
+.list{
+    background-color: rgba (223, 213, 0,9);
+    padding: 10px;
+}

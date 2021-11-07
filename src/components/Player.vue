@@ -1,41 +1,48 @@
 <template>
-  <div>
-      <div>
+<section>
+  <div class="search">
+    <label>Search for a song:</label>
+    <input type="text" placeholder="Search for a song" v-model="name" />
+    <button @click="searchSong">Search</button> 
+    </div>
+
+    <br>
+    <br>
+
+    <div class="buttons">
         <button @click="playSong()">Play</button>
         <button @click="pause()">Pause</button>
         <button @click="playPrevious()">Play Next</button>
         <button @click="playNext()">Play Previous</button>
-      </div>
-
-    <input type='text' v-model="input" placeholder='search for song'/>   
-    <p>Value: {{ input }}</p>
+    </div>
 
     <br>
     <br>
-    <br>
 
-    <ul>
+    <ul class="list">
       <li><b>Click to play:</b></li>
       <li v-for='songs in this.$store.state.data.content' :key="songs">
-        <button @click="play(songs.videoId)">{{ songs.name }}</button>
+        <button @click="playByIndex(songs.videoId)">{{ songs.name }}</button>
       </li>
     </ul>
+    </section>
     
-  </div>
 </template>
 
 <script>
 export default {
     data(){
         return {
-            input: "my name"
+            name: ""
         }
     },
   methods:{
-    play(id){
-      // calling global variable
-      window.player.loadVideoById(id)
-      window.player.playVideo()
+    playByIndex(id){
+      for (let index = 0; index < this.$store.state.data.content.length; index++) {
+        if (this.$store.state.data.content[index].videoId == id) {
+          window.player.playVideoAt(index)
+        }
+      }
     },
     playSong(){
         window.player.playVideo()
@@ -55,11 +62,25 @@ export default {
     },
       searchForSong(input){
         this.$store.state.data
-     }
-  },
-  mounted() {
-    this.$store.dispatch('loadSong')
-    this.$store.state.data
-  }
+    },
+
+    async searchSong() {
+      await this.$store.dispatch('searchForSong', [this.name])
+
+      var videoIdsArray = []
+      for (let index = 0; index < this.$store.state.data.content.length; index++) {
+        videoIdsArray.push(this.$store.state.data.content[index].videoId);
+      }
+
+      await window.player.loadPlaylist(videoIdsArray)
+      const loadSongs = new Promise((resolve) => {
+        resolve(window.player.loadPlaylist(videoIdsArray))
+      });
+
+      loadSongs.then(() => {
+        window.player.pauseVideo()
+      });
+    }
+    }
 }
 </script>

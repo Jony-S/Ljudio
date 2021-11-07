@@ -5,21 +5,16 @@ const state = {
 }
 
 const mutations = {
-    playSong(state, value){
+    saveState(state, value){
         state.data = value
     }
 }
 
 const actions = {
-    async loadSong({commit, value}){
-        let result = await fetch('https://yt-music-api.herokuapp.com/api/yt/songs/{{nothing%20else%20matters}}')
+    async searchForSong({commit}, [name]){
+        let result = await fetch('https://yt-music-api.herokuapp.com/api/yt/songs/' + name)
         let data = await result.json()
-        commit('playSong', data)
-    },
-    async searchForSong({commit, textFromSearchField}){
-        let result = await fetch('https://yt-music-api.herokuapp.com/api/yt/songs/' + textFromSearchField)
-        let data = await result.json()
-        commit('playSong', data)
+        commit('saveState', data)
     }
 }
 

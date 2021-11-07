@@ -1,24 +1,29 @@
 <template>
-    <div>
-        <h1>Ljudio</h1>
+    <body>
+        <div class="wrapper">
+        <header>
+            <h1>Ljudio</h1>
+        </header>
 
-        <router-link to="/">Route</router-link>
+        <main>
+
+        <Player/>
 
         <br>
         <br>
 
-        <router-view></router-view> 
-        <FooterComponent/>
-    </div>
+        </main>
+        </div>
+    </body>
 </template>
 
 
 <script>
-import FooterComponent from '/src/components/Footer.vue'
+import Player from './components/Player.vue'
 
 export default {
-    components:{ 
-        FooterComponent
+    components:{
+    Player
     }
 }
 </script>
