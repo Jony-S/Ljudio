@@ -6,12 +6,12 @@
         </header>
 
         <main>
-
-            <router-link to="/Artists">Search for artists</router-link>
-            <router-view></router-view>
-
-        <Player/>
-
+            <div class="nav">
+                <router-link to="/">Home</router-link> |
+                <router-link to="/player">Search and play songs</router-link> |
+                <router-link to="/Artist">Search for artists</router-link> |
+                <router-view></router-view>
+            </div>
         </main>
         </div>
     </body>
@@ -19,11 +19,4 @@
 
 
 <script>
-import Player from './components/Player.vue'
-
-export default {
-    components:{
-    Player
-    }
-}
 </script>

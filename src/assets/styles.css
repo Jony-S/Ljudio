@@ -72,3 +72,13 @@ label, p {
     font-size: 20px;
 }
 
+nav {
+    display: flex;
+    justify-content: space-around;
+}
+
+a {
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    text-decoration: none;
+}
+
