@@ -29,26 +29,40 @@ main {
 }
 
 .search {
+    width: 40vw;
+    margin-left: 10vw;
     padding: 10px;
-    display: flexbox;
-    justify-content: space-between;
+    display: flex;    
+    flex-direction: row;
+    justify-content: space-evenly;
 }
 
 .button {
+    width: 20vw;
     padding: 10px;
-    display: flexbox;
-    justify-content: space-between;
-
+    display: flex;    
+    flex-direction:row;
+    justify-content:space-evenly;
 }
 
 .list{
     padding: 10px;
     list-style-type:none;
-    display: flexbox;
-    justify-content: space-between;
 }
+
+.li {
+    display: flex;
+    flex-direction: row;
+    justify-content:space-between;
+}
+
+.listSongName { 
+    color:rgb(245,245,245);
+    font-weight: bold;
+}
+
 label, p {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-size: larger;
+    font-size:x-large
 }
 

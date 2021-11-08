@@ -4,7 +4,7 @@ import Player from '/src/components/Player.vue'
 const routes = [
     {
         path: '/',
-        name: 'Player', // om man i sitt script vill byta vy utan att användaren har gjort ngt
+        name: 'Player',
         component: Player
     }
 ]

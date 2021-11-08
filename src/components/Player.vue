@@ -1,37 +1,41 @@
 <template>
 <section>
-  <div class="search">
-    <label>Search for a song:     </label>
-    <input type="text" placeholder="Search for a song" v-model="name" />
-    <button class="fa fa-search fa-2x" @click="searchSong"></button> 
+
+    <div class="search">
+      <label>Search for songs: </label>
+      <input type="text" placeholder="Search for songs" v-model="song" />
+      <button class="fa fa-search fa-2x" @click="searchSong"></button> 
     </div>
 
-    <br>
 
     <div class="button">
-        <button class="fa fa-play fa-2x" @click="playSong()"></button>
         <button class="fa fa-pause fa-2x" @click="pause()"></button>
-        <button class="fa fa-step-forward fa-2x" @click="playPrevious()"></button>
         <button class="fa fa-step-backward fa-2x" @click="playNext()"></button>
-    </div>
+        <button class="fa fa-play fa-2x" @click="playSong()"></button>
+        <button class="fa fa-step-forward fa-2x" @click="playPrevious()"></button>
 
+    </div>
     <ul class="list">
-      <li><p>Search result:</p></li>
+      <p>Search result:</p>
       <li v-for='songs in this.$store.state.data.content' :key="songs">
-        <button @click="playByIndex(songs.videoId)">{{ songs.name }}</button>
+        <button class="fa fa-play" @click="playByIndex(songs.videoId)"></button>
+        <span class="listSongName"> {{ songs.name }}</span>
+        <br>
+        <p style="font-size:12px">Artist: {{songs.artist.name}}</p>
       </li>
     </ul>
-    </section>
-    
+        
+
+  </section>
 </template>
 
 <script>
 export default {
-    data(){
-        return {
-            name: ""
-        }
-    },
+  data(){
+    return {
+      song: ''
+    }
+  },
   methods:{
     playByIndex(id){
       for (let index = 0; index < this.$store.state.data.content.length; index++) {
@@ -41,27 +45,13 @@ export default {
       }
     },
     playSong(){
-        window.player.playVideo()
+      window.player.playVideo()
     },
     pause(){
       window.player.pauseVideo()
     },
-    playNext(){
-      window.player.nextVideo()
-    },
-    playPrevious(){
-      window.player.previousVideo()
-    },
-    loadSong(){
-      console.log(data.content[0].name)
-      this.play(data.content[0].videoId)
-    },
-      searchForSong(input){
-        this.$store.state.data
-    },
-
     async searchSong() {
-      await this.$store.dispatch('searchForSong', [this.name])
+      await this.$store.dispatch('searchForSong', [this.song])
 
       var videoIdsArray = []
       for (let index = 0; index < this.$store.state.data.content.length; index++) {
@@ -76,7 +66,13 @@ export default {
       loadSongs.then(() => {
         window.player.pauseVideo()
       });
+    },
+    playNextVideo(){
+      window.player.nextVideo()
+    },
+    playPreviousVideo(){
+      window.player.previousVideo()
     }
-    }
+  }
 }
 </script>
