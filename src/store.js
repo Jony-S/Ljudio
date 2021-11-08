@@ -21,7 +21,7 @@ const actions = {
         commit('saveState', data)
     },
     async searchForArtist({commit}, [artist]){
-        let result = await fetch('https://yt-music-api.herokuapp.com/api/yt/artist/' + artist)
+        let result = await fetch('https://yt-music-api.herokuapp.com/api/yt/artists/' + artist)
         let data = await result.json()
         console.log(data)
         commit('saveStateArtist', data)
