@@ -10,9 +10,9 @@
 
     <div class="button">
         <button class="fa fa-pause fa-2x" @click="pause()"></button>
-        <button class="fa fa-step-backward fa-2x" @click="playNext()"></button>
+        <button class="fa fa-step-backward fa-2x" @click="playPrevious()"></button>
         <button class="fa fa-play fa-2x" @click="playSong()"></button>
-        <button class="fa fa-step-forward fa-2x" @click="playPrevious()"></button>
+        <button class="fa fa-step-forward fa-2x" @click="playNext()"></button>
 
     </div>
     <ul class="list">
@@ -21,7 +21,7 @@
         <button class="fa fa-play" @click="playByIndex(songs.videoId)"></button>
         <span class="listSongName"> {{ songs.name }}</span>
         <br>
-        <p style="font-size:12px">Artist: {{songs.artist.name}}</p>
+        <p class="listSongArtist">Link: https://www.youtube.com/watch?v={{songs.videoId }}</p>
       </li>
     </ul>
         
@@ -67,10 +67,10 @@ export default {
         window.player.pauseVideo()
       });
     },
-    playNextVideo(){
+    playNext(){
       window.player.nextVideo()
     },
-    playPreviousVideo(){
+    playPrevious(){
       window.player.previousVideo()
     }
   }

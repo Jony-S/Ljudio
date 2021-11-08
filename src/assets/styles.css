@@ -21,6 +21,7 @@ header {
 
 h1 {
     margin: 0;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
 main {
@@ -57,12 +58,17 @@ main {
 }
 
 .listSongName { 
-    color:rgb(245,245,245);
+    color:rgb(97, 59, 201);
     font-weight: bold;
+}
+
+.listSongArtist { 
+    color:rgb(124, 74, 241);
+    font-size: 12px;
 }
 
 label, p {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-size:x-large
+    font-size: 20px;
 }
 

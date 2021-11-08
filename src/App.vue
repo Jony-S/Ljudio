@@ -7,6 +7,9 @@
 
         <main>
 
+            <router-link to="/Artists">Search for artists</router-link>
+            <router-view></router-view>
+
         <Player/>
 
         </main>
