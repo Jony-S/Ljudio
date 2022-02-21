@@ -1,7 +1,7 @@
 <template>
-<section>
+<section class="search">
 
-    <div class="search">
+    <div >
       <label>Search for songs: </label>
       <input type="text" placeholder="Search for songs" v-model="song" />
       <button class="fa fa-search fa-2x" @click="searchSong"></button> 
@@ -9,11 +9,11 @@
 
 
 
-
+<p>Search result:</p>
     <ul class="list">
-      <p>Search result:</p>
+      
       <li v-for='songs in this.$store.state.data.content' :key="songs">
-        <button class="fa fa-play" @click="playByIndex(songs.videoId)"></button>
+        <!-- <button class="fa fa-play" @click="playByIndex(songs.videoId)"></button> -->
         <span class="listSongName"> {{ songs.name }}</span>
         <br>
         <p class="listSongArtist">Link: https://www.youtube.com/watch?v={{songs.videoId }}</p>

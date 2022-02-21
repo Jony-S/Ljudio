@@ -8,14 +8,6 @@ body {
     margin: 5vh 5vw 5vh 5vw;
 }
 
-header {
-    font-size: 200%;
-    background-color: rgba (223, 213, 0,9);
-    width: 20vw;
-    height: 8vh;
-    margin: 5vh 35vw 5vh 35vw;
-}
-
 h1 {
     margin: 0;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
@@ -26,13 +18,28 @@ main {
     margin: 0vh 10vw 0vh 10vw;
 }
 
+.ljudio{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 400%;
+    margin-bottom: 10px;
+}
+
 .search {
-    width: 40vw;
-    margin-left: 10vw;
-    padding: 10px;
+    padding-top: 30px;
     display: flex;    
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-evenly;
+    align-items: center;
+}
+
+.player {
+    padding-top: 30px;
+    display: flex;    
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
 }
 
 .button {
@@ -44,6 +51,10 @@ main {
 }
 
 .list{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
     padding: 10px;
     list-style-type:none;
 }
@@ -51,16 +62,16 @@ main {
 .li {
     display: flex;
     flex-direction: row;
-    justify-content:space-between;
+    justify-content:flex-start;
 }
 
 .listSongName { 
-    color:rgb(97, 59, 201);
+    color:rgb(93, 73, 211);
     font-weight: bold;
 }
 
 .listSongArtist { 
-    color:rgb(124, 74, 241);
+    color:rgb(219, 134, 141);
     font-size: 12px;
 }
 
@@ -70,14 +81,18 @@ label, p {
 }
 
 .nav {
-    padding-left: 22vw;
-    width: 40vw;
-    display: flex;
-    justify-content:space-around;
+    padding-top: 30px;
+    display: flex;    
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
 }
 
 a {
     font-family:Verdana, Geneva, Tahoma, sans-serif;
     text-decoration: none;
+    font-size: 2vh;
+    padding-right: 2vh;
+    padding-left: 2vh;
 }
 
