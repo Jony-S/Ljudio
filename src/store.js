@@ -15,8 +15,8 @@ const mutations = {
 }
 
 const actions = {
-    async searchForSong({commit}, [song]){
-        let result = await fetch('https://yt-music-api.herokuapp.com/api/yt/songs/' + song)
+    async searchForSong({commit}, searchObject){
+        let result = await fetch(`https://yt-music-api.herokuapp.com/api/yt/songs/${searchObject.song}`)
         let data = await result.json()
         commit('saveState', data)
     },
