@@ -7,16 +7,15 @@
       <button class="fa fa-search fa-2x" @click="searchSong(searchObject)"></button> 
     </div>
 
-
-
-<p>Search result:</p>
+    <p>Search result:</p>
 
     <div v-for="songs in this.$store.state.data.content" :key="songs.videoId">
-        <router-link type="button" :to="{ name: 'player', params: {videoId: songs.videoId}}">
-        <p>{{songs.name}}</p>
-        </router-link>
+        <span class="searchList">
+            <router-link @click="routeSong(songs.videoId)" type="button" :to="`/player/${songs.videoId}`">
+            <p>{{songs.name}}</p>
+            </router-link>
+        </span>
     </div>
-
 
     <!-- <ul class="list">
 
@@ -42,19 +41,7 @@ export default {
     },
 
     methods:{
-        playByIndex(id){
-        for (let index = 0; index < this.$store.state.data.content.length; index++) {
-            if (this.$store.state.data.content[index].videoId == id) {
-             window.player.playVideoAt(index)
-        }
-        }
-    },
-    // playSong(){
-    //     window.player.playVideo()
-    // },
-    // pause(){
-    //     window.player.pauseVideo()
-    // },
+
     async searchSong(searchObject) {
         console.log('searchObject', searchObject)
         
@@ -67,23 +54,15 @@ export default {
 
         console.log('data', this.$store.state.data)
         console.log('data.content', this.$store.state.data.content)
-
-        // await window.player.loadPlaylist(videoIdsArray)
-        // const loadSongs = new Promise((resolve) => {
-        //     resolve(window.player.loadPlaylist(videoIdsArray))
-        // });
-
-        // loadSongs.then(() => {
-        // window.player.pauseVideo()
-        // });
     },
 
-    // playNext(){
-    //     window.player.nextVideo()
-    // },
-    // playPrevious(){
-    //     window.player.previousVideo()
-    // }
-  }
+    routeSong(id){
+        this.$store.dispatch('currentSong', id)
+    },
+
+    }
+
+
+  
 }
 </script>

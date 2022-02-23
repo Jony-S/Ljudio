@@ -34,6 +34,10 @@ main {
     align-items: center;
 }
 
+.searchList {
+    height: 20vh;
+}
+
 .player {
     padding-top: 30px;
     display: flex;    
