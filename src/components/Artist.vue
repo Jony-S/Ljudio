@@ -1,19 +1,17 @@
 <template>
-    <section>
+    <section class="search">
 
-        <div class="search">
+        <div>
             <label>Search for artists: </label>
-            <input type="text" placeholder="Search for artists" v-model="artist" />
-            <button class="fa fa-search fa-2x" @click="searchArtist()"></button> 
+            <input style="margin-right: 5px;" type="text" placeholder="Search for artists" v-model="artist" />
+            <button style="margin-left: 10px;" class="fa fa-search fa" @click="searchArtist()"></button> 
         </div>
 
-        <ul class="list">
-            <p>Search result:</p>
-            <li v-for='a in this.$store.state.artistData.content' :key="a">
-                <span class="listSongName"> {{ a.name }}</span>
-                <br>
-            </li>
-        </ul>
+        <p>Search result:</p>
+
+        <div v-for='a in this.$store.state.artistData.content' :key="a">
+            <p style="margin:0">{{a.name}}</p>
+        </div>
         
     </section>
 </template>

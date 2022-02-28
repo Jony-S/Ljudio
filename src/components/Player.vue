@@ -8,9 +8,21 @@
             <button class="fa fa-step-forward fa-2x" @click="playNext()"></button>
         </div>
 
-        <div>Song: {{song.artist.name}}</div>
-        <div>Song: {{song.name}}</div>
+        <div class="nowPlaying">
+            <div class="nowPlayingText">Now playing:</div>
+            <div style="padding:10px">
 
+                <div>Song: {{song.artist.name}}</div>
+                <div>Song: {{song.name}}</div>
+            </div>
+        </div>
+
+
+        <div v-for="songs in this.$store.state.data.content" :key="songs.videoId" style="margin-bottom:-30px">
+            <router-link @click="routeSong(songs.videoId)" :to="`/player/${songs.videoId}`">
+            <p style="margin:0">{{songs.name}}</p>
+            </router-link>
+    </div>
 
     </section>
 </template>
@@ -27,12 +39,13 @@ export default{
 
     computed:{
         song(){
-            console.log('player -> song():', this.$store.state.currentSong)
+            console.log('computed:', this.$store.state.currentSong)
             return this.$store.state.currentSong
         }
     },
 
     created(){
+        console.log('created')
     this.$store.dispatch('currentSong', this.id)
     },
 

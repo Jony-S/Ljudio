@@ -1,31 +1,19 @@
 <template>
-<section class="search">
+    <section class="search">
 
-    <div >
-      <label>Search for songs: </label>
-      <input type="text" placeholder="Search for songs" v-model="searchObject.song" />
-      <button class="fa fa-search fa-2x" @click="searchSong(searchObject)"></button> 
-    </div>
+        <div>
+            <label>Search for songs: </label>
+            <input style="margin-right: 5px;" type="text" placeholder="Search for songs" v-model="searchObject.song" />
+            <button style="margin-left: 10px;" class="fa fa-search fa" @click="searchSong(searchObject)"></button> 
+        </div>
 
-    <p>Search result:</p>
+        <p>Search result:</p>
 
-    <div v-for="songs in this.$store.state.data.content" :key="songs.videoId">
-        <span class="searchList">
-            <router-link @click="routeSong(songs.videoId)" type="button" :to="`/player/${songs.videoId}`">
-            <p>{{songs.name}}</p>
+        <div v-for="songs in this.$store.state.data.content" :key="songs.videoId" style="margin-bottom:-30px">
+            <router-link @click="routeSong(songs.videoId)" :to="`/player/${songs.videoId}`">
+            <p style="margin:0">{{songs.name}}</p>
             </router-link>
-        </span>
-    </div>
-
-    <!-- <ul class="list">
-
-      <li v-for='songs in this.$store.state.data.content' :key="songs">
-        <button class="fa fa-play" @click="playByIndex(songs.videoId)"></button>
-        <span class="listSongName"> {{ songs.name }}</span>
-        <br>
-        <p class="listSongArtist">Link: https://www.youtube.com/watch?v={{songs.videoId }}</p>
-      </li>
-    </ul> -->
+        </div>
         
   </section>
 </template>

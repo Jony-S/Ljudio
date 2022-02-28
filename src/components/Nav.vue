@@ -3,9 +3,9 @@
     <p class="ljudio">Ljudio</p>
     
     <div class="nav">
-        <router-link to="/">Home</router-link> |
-        <router-link to="/player">Player</router-link> |
-        <router-link to="/Artist">Search for artists</router-link>
+        <router-link to="/">Search for songs</router-link> |
+        <router-link to="/Artist">Search for artists</router-link> |
+        <router-link to="/About">About</router-link>
     </div>
 
 </template>
