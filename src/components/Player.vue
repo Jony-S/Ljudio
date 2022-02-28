@@ -51,6 +51,10 @@ export default{
         this.searchString = data[0]
         this.currentSongId = data[1]
         this.$store.dispatch('currentSong', this.currentSongId)
+        
+        const searchString = this.searchString;
+        const searchObject = { song: searchString }
+        this.$store.dispatch('searchForSong', searchObject)
     },
 
     methods:{
