@@ -17,12 +17,11 @@
             </div>
         </div>
 
-
         <div v-for="songs in this.$store.state.data.content" :key="songs.videoId" style="margin-bottom:-30px">
             <router-link @click="routeSong(songs.videoId)" :to="`/player/${songs.videoId}`">
             <p style="margin:0">{{songs.name}}</p>
             </router-link>
-    </div>
+        </div>
 
     </section>
 </template>
@@ -50,34 +49,17 @@ export default{
     },
 
     methods:{
-    // getCurrentSong(){
-    //     return this.$store.state.currentSong
-    // },
 
-    //     playByIndex(id){
-    //     for (let index = 0; index < this.$store.state.data.content.length; index++) {
-    //         if (this.$store.state.data.content[index].videoId == id) {
-    //          window.player.playVideoAt(index)
-    //     }
-    //     }
-    // },
-
-        // await window.player.loadPlaylist(videoIdsArray)
-    // const loadSongs = new Promise((resolve) => {
-    //     resolve(window.player.loadPlaylist(videoIdsArray))
-    // });
-
-    // loadSongs.then(() => {
-    // window.player.pauseVideo()
-    // });
+    routeSong(id){
+        this.$store.dispatch('currentSong', id)
+    },
 
     playSong(){
-        window.player.loadVideoById(this.id)
+        window.player.loadVideoById(id)
     },
     pause(){
         window.player.pauseVideo()
     },
-
 
     playNext(){
         window.player.nextVideo()

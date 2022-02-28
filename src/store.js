@@ -33,9 +33,12 @@ const actions = {
     },
 
     async currentSong({commit}, id){
+        console.log("current song", id)
         let response = await fetch
         (`https://yt-music-api.herokuapp.com/api/yt/songs/${id}`)
         let data = await response.json()
+
+        console.log("current song after api fetch", data)
 
         commit('setCurrentSong', data)
 
