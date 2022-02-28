@@ -10,7 +10,7 @@
         <p>Search result:</p>
 
         <div v-for="songs in this.$store.state.data.content" :key="songs.videoId" style="margin-bottom:-30px">
-            <router-link @click="routeSong(songs.videoId)" :to="`/player/${songs.videoId}`">
+            <router-link @click="routeSong(songs.videoId)" :to="`/player/${[searchObject.song, songs.videoId]}`">
             <p style="margin:0">{{songs.name}}</p>
             </router-link>
         </div>

@@ -32,7 +32,9 @@ export default{
 
     data(){
         return{
-            id: (this.$route.params.videoId)        
+            urlData: (this.$route.params.videoId),
+            searchString: '',
+            currentSongId: ''        
         }
     },
 
@@ -45,17 +47,21 @@ export default{
 
     created(){
         console.log('created')
-    this.$store.dispatch('currentSong', this.id)
+        const data = this.urlData.split(',');
+        this.searchString = data[0]
+        this.currentSongId = data[1]
+        this.$store.dispatch('currentSong', this.currentSongId)
     },
 
     methods:{
 
-    routeSong(id){
-        this.$store.dispatch('currentSong', id)
+    routeSong(clickedId){
+        this.currentSongId = clickedId
+        this.$store.dispatch('currentSong', this.currentSongId)
     },
 
     playSong(){
-        window.player.loadVideoById(id)
+        window.player.loadVideoById(this.currentSongId)
     },
     pause(){
         window.player.pauseVideo()
