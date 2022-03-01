@@ -17,10 +17,12 @@
             </div>
         </div>
 
-        <div v-for="songs in this.$store.state.data.content" :key="songs.videoId" style="margin-bottom:-30px">
-            <router-link @click="routeSong(songs.videoId)" :to="`/player/${songs.videoId}`">
-            <p style="margin:0">{{songs.name}}</p>
-            </router-link>
+        <div v-if="isFetched">
+            <div v-for="songs in this.$store.state.data.content" :key="songs.videoId" style="margin-bottom:-30px">
+                <router-link @click="routeSong(songs.videoId)" :to="`/player/${songs.videoId}`">
+                <p style="margin:0">{{songs.name}}</p>
+                </router-link>
+            </div>
         </div>
 
     </section>
@@ -32,9 +34,12 @@ export default{
 
     data(){
         return{
+            searchObject: {
+                searchString: '',
+            },
             urlData: (this.$route.params.videoId),
-            searchString: '',
-            currentSongId: ''        
+            currentSongId: '',
+            isFetched = false        
         }
     },
 
@@ -51,13 +56,20 @@ export default{
         this.searchString = data[0]
         this.currentSongId = data[1]
         this.$store.dispatch('currentSong', this.currentSongId)
-        
-        const searchString = this.searchString;
-        const searchObject = { song: searchString }
-        this.$store.dispatch('searchForSong', searchObject)
+
+        this.fetchData()
     },
 
     methods:{
+
+    getDataFromStore(){
+        this.$store.dispatch('searchForSong', this.searchObject)
+    },
+
+    fetchData(){
+        const timeout = setTimeout(this.getDataFromStore, 400);
+        this.isFetched = true
+    },
 
     routeSong(clickedId){
         this.currentSongId = clickedId
