@@ -17,13 +17,11 @@
             </div>
         </div>
 
-        <div v-if="isFetched">
             <div v-for="songs in this.$store.state.data.content" :key="songs.videoId" style="margin-bottom:-30px">
-                <router-link @click="routeSong(songs.videoId)" :to="`/player/${songs.videoId}`">
+                <router-link @click="routeSong(songs.videoId)" :to="`/player/${[searchObject.song, songs.videoId]}`">
                 <p style="margin:0">{{songs.name}}</p>
                 </router-link>
             </div>
-        </div>
 
     </section>
 </template>
@@ -35,11 +33,10 @@ export default{
     data(){
         return{
             searchObject: {
-                searchString: '',
+                song: '',
             },
             urlData: (this.$route.params.videoId),
             currentSongId: '',
-            isFetched = false        
         }
     },
 
@@ -53,24 +50,15 @@ export default{
     created(){
         console.log('created')
         const data = this.urlData.split(',');
-        this.searchString = data[0]
+        this.searchObject.song = data[0]
         this.currentSongId = data[1]
         this.$store.dispatch('currentSong', this.currentSongId)
 
-        this.fetchData()
-    },
-
-    methods:{
-
-    getDataFromStore(){
         this.$store.dispatch('searchForSong', this.searchObject)
     },
 
-    fetchData(){
-        const timeout = setTimeout(this.getDataFromStore, 400);
-        this.isFetched = true
-    },
-
+    methods:{
+        
     routeSong(clickedId){
         this.currentSongId = clickedId
         this.$store.dispatch('currentSong', this.currentSongId)
