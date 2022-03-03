@@ -37,6 +37,7 @@ export default{
             },
             urlData: (this.$route.params.videoId),
             currentSongId: '',
+            isPlayingSong = false
         }
     },
 
@@ -52,12 +53,20 @@ export default{
         const data = this.urlData.split(',');
         this.searchObject.song = data[0]
         this.currentSongId = data[1]
-        this.$store.dispatch('currentSong', this.currentSongId)
 
+        this.$store.dispatch('currentSong', this.currentSongId)
         this.$store.dispatch('searchForSong', this.searchObject)
+
+        window.player.loadPlaylist(this.$store.state.listVideoIds)
+        setTimeout(this.pauseVideoAfterCreated, 500)
+
     },
 
     methods:{
+
+    pauseVideoAfterCreated(){
+        window.player.pauseVideo()
+    },
         
     routeSong(clickedId){
         this.currentSongId = clickedId
@@ -65,8 +74,15 @@ export default{
     },
 
     playSong(){
-        window.player.loadVideoById(this.currentSongId)
+         if(this.isPlayingSong === false){
+             this.isPlayingSong = true;
+             window.player.loadVideoById(this.currentSongId)
+         } 
+       else if(this.isPlayingSong === true){
+        window.player.playVideo()
+       }
     },
+
     pause(){
         window.player.pauseVideo()
     },
