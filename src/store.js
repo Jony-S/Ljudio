@@ -29,10 +29,8 @@ const actions = {
 
         let listVideoIds = []
         for (let i = 0; i < data.content.length; i++) {
-            console.log('hamnar vi här?')
             listVideoIds.push(data.content[i].videoId)
         }
-        console.log('listvideIds', listVideoIds)
 
         commit('saveState', data)
         commit('setListVideoIds', listVideoIds)
@@ -46,21 +44,13 @@ const actions = {
     },
 
     async currentSong({commit}, id){
-        console.log("current song", id)
         let response = await fetch
         (`https://yt-music-api.herokuapp.com/api/yt/songs/${id}`)
         let data = await response.json()
 
-        console.log("current song after api fetch", data)
-
         commit('setCurrentSong', data)
-
-        console.log('currentSong', data)
-
-
     },
 }
-
 
 export default createStore ({
     state, mutations, actions
