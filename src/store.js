@@ -24,7 +24,7 @@ const mutations = {
 
 const actions = {
     async searchForSong({commit}, searchObject){
-        let result = await fetch(`https://yt-music-api.herokuapp.com/api/yt/songs/${searchObject.song}`)
+        let result = await fetch(`http://localhost:4000/api/yt/songs/${searchObject.song}`)
         let data = await result.json()
 
         let listVideoIds = []
@@ -37,7 +37,7 @@ const actions = {
     },
 
     async searchForArtist({commit}, [artist]){
-        let result = await fetch('https://yt-music-api.herokuapp.com/api/yt/artists/' + artist)
+        let result = await fetch('http://localhost:4000/api/yt/artists/' + artist)
         let data = await result.json()
 
         commit('saveStateArtist', data)
@@ -45,7 +45,7 @@ const actions = {
 
     async currentSong({commit}, id){
         let response = await fetch
-        (`https://yt-music-api.herokuapp.com/api/yt/songs/${id}`)
+        (`http://localhost:4000/api/yt/songs/${id}`)
         let data = await response.json()
 
         commit('setCurrentSong', data)
